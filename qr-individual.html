@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Individual QR Codes - Agro Santri Nusantara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  :root{
+    --hutan-deep: #12200F;
+    --tanah: #6B4A2F;
+    --krem: #F3EEE1;
+    --emas: #A9762F;
+    --hijau: #2D5016;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--krem);
+    font-family: 'Work Sans', sans-serif;
+    padding: 20px;
+  }
+
+  .page {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    background: white;
+    padding: 60px 40px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    page-break-after: always;
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--emas);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    color: var(--hutan-deep);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .qr-container {
+    background: var(--krem);
+    padding: 40px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+    min-height: 350px;
+  }
+
+  .qr-container canvas {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .instruction {
+    background: linear-gradient(135deg, var(--hijau), var(--hutan-deep));
+    color: white;
+    padding: 24px;
+    border-radius: 6px;
+    margin: 30px 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .url-display {
+    background: #f5f5f5;
+    padding: 16px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: #666;
+    word-break: break-all;
+    margin: 20px 0;
+    line-height: 1.4;
+  }
+
+  .footer-info {
+    font-size: 0.85rem;
+    color: #999;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+  }
+
+  .nav-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+  }
+
+  .nav-btn {
+    background: var(--emas);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+
+  .nav-btn:hover {
+    background: var(--tanah);
+  }
+
+  .print-btn {
+    background: var(--hijau);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.9rem;
+  }
+
+  .print-btn:hover {
+    background: var(--hutan-deep);
+  }
+
+  @media print {
+    body { padding: 0; background: white; }
+    .page { margin: 0; box-shadow: none; border-radius: 0; page-break-after: always; }
+    .nav-buttons { display: none; }
+    .print-btn { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 40px 24px; }
+    h1 { font-size: 1.6rem; }
+    .qr-container { padding: 20px; min-height: 280px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- QR 0: QRIS (PRIORITAS) -->
+<div class="page" id="page0">
+  <div class="logo">AGRO SANTRI NUSANTARA</div>
+  <h1 style="color: #FF6B35;">✨ QRIS - GoPay & Bank</h1>
+  <p class="subtitle"><strong style="color: #FF6B35; font-size: 1.1rem;">PRIORITAS UTAMA</strong><br>Pembayaran mudah dari GoPay, BCA, Mandiri, BNI, Bank BRI, dan bank lainnya</p>
+  
+  <div class="qr-container" id="qr0"></div>
+  
+  <div class="instruction" style="background: linear-gradient(135deg, #FF6B35, #E55100);">
+    <strong>Cara Pembayaran QRIS:</strong><br>
+    1. Scan QR di atas dengan kamera HP<br>
+    2. Pilih metode pembayaran: GoPay, BCA, Mandiri, BNI, atau BRI<br>
+    3. Masukkan nominal donasi<br>
+    4. Lakukan pembayaran<br>
+    5. Donasi langsung terverifikasi ✓
+  </div>
+
+  <div class="url-display" id="url0">Merchant ID: ID1024330896845</div>
+
+  <div class="footer-info">
+    WhatsApp: 0838-7166-6136 | Email: malviejayagroup@gmail.com
+  </div>
+
+  <div class="nav-buttons">
+    <button class="print-btn" onclick="window.print()">🖨 Print QR Ini</button>
+    <button class="nav-btn" onclick="document.getElementById('page1').scrollIntoView()">Next →</button>
+  </div>
+</div>
+
+<!-- QR 1: Donasi Sekarang -->
+<div class="page" id="page1">
+  <div class="logo">AGRO SANTRI NUSANTARA</div>
+  <h1>🎯 Donasi Sekarang</h1>
+  <p class="subtitle">Scan QR di bawah untuk membuka halaman donasi<br>Dukung program hortikultura organik santri di Kalimantan Timur</p>
+  
+  <div class="qr-container" id="qr1"></div>
+  
+  <div class="instruction">
+    <strong>Cara Menggunakan:</strong><br>
+    1. Buka kamera smartphone Anda<br>
+    2. Arahkan ke QR code ini<br>
+    3. Tap link yang muncul<br>
+    4. Isi form nama & nominal donasi<br>
+    5. Transfer sesuai instruksi
+  </div>
+
+  <div class="url-display" id="url1">Loading...</div>
+
+  <div class="footer-info">
+    WhatsApp: 0838-7166-6136 | Email: malviejayagroup@gmail.com
+  </div>
+
+  <div class="nav-buttons">
+    <button class="nav-btn" onclick="document.getElementById('page0').scrollIntoView()">← Prev</button>
+    <button class="print-btn" onclick="window.print()">🖨 Print QR Ini</button>
+    <button class="nav-btn" onclick="document.getElementById('page2').scrollIntoView()">Next →</button>
+  </div>
+</div>
+
+<!-- QR 2: Tracking Donatur -->
+<div class="page" id="page2">
+  <div class="logo">AGRO SANTRI NUSANTARA</div>
+  <h1>📊 Tracking Donatur</h1>
+  <p class="subtitle">Scan QR untuk melihat progress real-time<br>Transparansi penuh atas penggunaan dana</p>
+  
+  <div class="qr-container" id="qr2"></div>
+  
+  <div class="instruction">
+    <strong>Apa Yang Bisa Anda Lihat:</strong><br>
+    ✓ Progress bar target Rp100 juta<br>
+    ✓ Daftar donor yang sudah berkontribusi<br>
+    ✓ Update real-time setiap ada donasi baru
+  </div>
+
+  <div class="url-display" id="url2">Loading...</div>
+
+  <div class="footer-info">
+    WhatsApp: 0838-7166-6136 | Email: malviejayagroup@gmail.com
+  </div>
+
+  <div class="nav-buttons">
+    <button class="nav-btn" onclick="document.getElementById('page1').scrollIntoView()">← Prev</button>
+    <button class="print-btn" onclick="window.print()">🖨 Print QR Ini</button>
+    <button class="nav-btn" onclick="document.getElementById('page3').scrollIntoView()">Next →</button>
+  </div>
+</div>
+
+<!-- QR 3: Detail Kampanye -->
+<div class="page" id="page3">
+  <div class="logo">AGRO SANTRI NUSANTARA</div>
+  <h1>📋 Detail Kampanye</h1>
+  <p class="subtitle">Scan QR untuk akses halaman kampanye lengkap<br>RAB, timeline, dan FAQ mendetail</p>
+  
+  <div class="qr-container" id="qr3"></div>
+  
+  <div class="instruction">
+    <strong>Informasi Kampanye Lengkap:</strong><br>
+    ✓ Rencana Anggaran Biaya (RAB) Rp75.200.000<br>
+    ✓ Timeline implementasi 6 bulan<br>
+    ✓ Pertanyaan yang sering diajukan (FAQ)<br>
+    ✓ Impact metrics & hasil yang diharapkan
+  </div>
+
+  <div class="url-display" id="url3">Loading...</div>
+
+  <div class="footer-info">
+    WhatsApp: 0838-7166-6136 | Email: malviejayagroup@gmail.com
+  </div>
+
+  <div class="nav-buttons">
+    <button class="nav-btn" onclick="document.getElementById('page2').scrollIntoView()">← Prev</button>
+    <button class="print-btn" onclick="window.print()">🖨 Print QR Ini</button>
+    <button class="nav-btn" onclick="document.getElementById('page4').scrollIntoView()">Next →</button>
+  </div>
+</div>
+
+<!-- QR 4: WhatsApp Chat -->
+<div class="page" id="page4">
+  <div class="logo">AGRO SANTRI NUSANTARA</div>
+  <h1>💬 Chat WhatsApp</h1>
+  <p class="subtitle">Scan QR untuk chat langsung dengan tim<br>Tanya-tanya & diskusi donasi</p>
+  
+  <div class="qr-container" id="qr4"></div>
+  
+  <div class="instruction">
+    <strong>Hubungi Tim:</strong><br>
+    ✓ Tanya-tanya tentang program<br>
+    ✓ Diskusi donasi & metode transfer<br>
+    ✓ Minta informasi lebih lengkap<br>
+    ✓ Jadilah bagian dari komunitas kami
+  </div>
+
+  <div class="url-display" id="url4">Loading...</div>
+
+  <div class="footer-info">
+    WhatsApp: 0838-7166-6136 | Email: malviejayagroup@gmail.com
+  </div>
+
+  <div class="nav-buttons">
+    <button class="nav-btn" onclick="document.getElementById('page3').scrollIntoView()">← Prev</button>
+    <button class="print-btn" onclick="window.print()">🖨 Print QR Ini</button>
+    <button class="nav-btn" onclick="document.getElementById('page5').scrollIntoView()">Next →</button>
+  </div>
+</div>
+
+<!-- QR 5: Proposal -->
+<div class="page" id="page5">
+  <div class="logo">AGRO SANTRI NUSANTARA</div>
+  <h1>📄 Proposal Lengkap</h1>
+  <p class="subtitle">Scan QR untuk akses proposal formal<br>Dokumen resmi dengan semua detail teknis</p>
+  
+  <div class="qr-container" id="qr5"></div>
+  
+  <div class="instruction">
+    <strong>Proposal Mencakup:</strong><br>
+    ✓ Latar belakang program Agro Santri<br>
+    ✓ Rencana Anggaran Biaya (RAB) detail<br>
+    ✓ Timeline & milestone<br>
+    ✓ Expected outcomes & impact measurement
+  </div>
+
+  <div class="url-display" id="url5">Loading...</div>
+
+  <div class="footer-info">
+    WhatsApp: 0838-7166-6136 | Email: malviejayagroup@gmail.com
+  </div>
+
+  <div class="nav-buttons">
+    <button class="nav-btn" onclick="document.getElementById('page4').scrollIntoView()">← Prev</button>
+    <button class="print-btn" onclick="window.print()">🖨 Print QR Ini</button>
+    <button class="nav-btn" onclick="document.getElementById('page6').scrollIntoView()">Next →</button>
+  </div>
+</div>
+
+<!-- QR 6: LinkAja Transfer -->
+<div class="page" id="page6">
+  <div class="logo">AGRO SANTRI NUSANTARA</div>
+  <h1>💳 Transfer LinkAja</h1>
+  <p class="subtitle">Scan QR untuk instruksi transfer via LinkAja<br>Pembayaran cepat & aman</p>
+  
+  <div class="qr-container" id="qr6"></div>
+  
+  <div class="instruction">
+    <strong>Cara Transfer LinkAja:</strong><br>
+    ✓ Nomor LinkAja: <strong>0838-7166-6136</strong><br>
+    ✓ Atas Nama: Yayasan Siddiq Zarkasyi<br>
+    ✓ Transfer instant, tanpa biaya admin<br>
+    ✓ Chat konfirmasi setelah transfer
+  </div>
+
+  <div class="url-display" id="url6">Loading...</div>
+
+  <div class="footer-info">
+    WhatsApp: 0838-7166-6136 | Email: malviejayagroup@gmail.com
+  </div>
+
+  <div class="nav-buttons">
+    <button class="nav-btn" onclick="document.getElementById('page5').scrollIntoView()">← Prev</button>
+    <button class="print-btn" onclick="window.print()">🖨 Print QR Ini</button>
+    <button class="nav-btn" onclick="document.getElementById('page1').scrollIntoView()">Back to Start ↑</button>
+  </div>
+</div>
+
+<script>
+  const qrData = [
+    { 
+      id: 'qr0', 
+      url: 'https://wa.me/6283871666136?text=Saya%20ingin%20bayar%20via%20QRIS%2FGoPay%20untuk%20Agro%20Santri.%20NMID:%20ID1024330896845',
+      urlId: 'url0'
+    },
+    { 
+      id: 'qr1', 
+      url: 'https://claude.ai/artifact/KqV67zhqJrH7SEAgn1Edku',
+      urlId: 'url1'
+    },
+    { 
+      id: 'qr2', 
+      url: 'https://claude.ai/artifact/1GuaJubsjxZyvfXpLqQyhB',
+      urlId: 'url2'
+    },
+    { 
+      id: 'qr3', 
+      url: 'https://claude.ai/artifact/BaGaUPSRX5eYAq8XNgJq5B',
+      urlId: 'url3'
+    },
+    { 
+      id: 'qr4', 
+      url: 'https://wa.me/6283871666136?text=Saya%20ingin%20berkontribusi%20untuk%20Agro%20Santri%20Nusantara',
+      urlId: 'url4'
+    },
+    { 
+      id: 'qr5', 
+      url: 'https://claude.ai/artifact/6DVS5DdR6taAiSSAJWhRim',
+      urlId: 'url5'
+    },
+    { 
+      id: 'qr6', 
+      url: 'https://wa.me/6283871666136?text=Saya%20ingin%20transfer%20via%20LinkAja%200838-7166-6136%20untuk%20Agro%20Santri',
+      urlId: 'url6'
+    }
+  ];
+
+  qrData.forEach(data => {
+    const container = document.getElementById(data.id);
+    const urlElement = document.getElementById(data.urlId);
+    
+    if (container) {
+      new QRCode(container, {
+        text: data.url,
+        width: 250,
+        height: 250,
+        colorDark: '#12200F',
+        colorLight: '#F3EEE1',
+        correctLevel: QRCode.CorrectLevel.H
+      });
+      
+      if (urlElement) {
+        urlElement.textContent = data.url;
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
