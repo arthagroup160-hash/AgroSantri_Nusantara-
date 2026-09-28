@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agro Santri Nusantara - Donasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  :root {
+    --primary: #0099FF;
+    --secondary: #FF3B30;
+    --dark: #12200F;
+    --light: #F3EEE1;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Work Sans', sans-serif;
+    background: linear-gradient(135deg, var(--primary) 0%, #0077CC 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .container {
+    background: white;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 100%;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+
+  .tagline {
+    color: #666;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .content {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    color: var(--dark);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .description {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .highlight {
+    background: #FFF3E0;
+    border-left: 4px solid var(--secondary);
+    padding: 16px;
+    border-radius: 6px;
+    margin: 24px 0;
+    color: #333;
+    font-weight: 500;
+  }
+
+  .qr-section {
+    background: #F8F8F8;
+    padding: 32px;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  .qr-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--secondary);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .qr-container {
+    display: inline-block;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .qr-container canvas {
+    display: block;
+    max-width: 100%;
+  }
+
+  .merchant-info {
+    margin-top: 16px;
+    font-size: 12px;
+    color: #999;
+  }
+
+  .cta-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .btn {
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Work Sans', sans-serif;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #0088DD;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 153, 255, 0.3);
+  }
+
+  .btn-secondary {
+    background: white;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+  }
+
+  .btn-secondary:hover {
+    background: #F0F8FF;
+  }
+
+  .footer {
+    text-align: center;
+    padding-top: 24px;
+    border-top: 1px solid #EEE;
+    color: #999;
+    font-size: 13px;
+  }
+
+  .footer-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .footer-link:hover {
+    text-decoration: underline;
+  }
+
+  .feature-list {
+    list-style: none;
+    margin: 20px 0;
+    text-align: left;
+  }
+
+  .feature-list li {
+    padding: 8px 0;
+    color: #555;
+    font-size: 14px;
+  }
+
+  .feature-list li:before {
+    content: "✓ ";
+    color: var(--secondary);
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 28px;
+    }
+
+    .title {
+      font-size: 24px;
+    }
+
+    .cta-buttons {
+      grid-template-columns: 1fr;
+    }
+
+    .qr-section {
+      padding: 24px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="logo">🌱 Agro Santri</div>
+    <div class="tagline">Nusantara</div>
+  </header>
+
+  <div class="content">
+    <h1 class="title">Dukung Program Hortikultura Organik</h1>
+    
+    <p class="description">
+      Bantu para santri belajar berkebun organik dan membangun masa depan yang lebih hijau di Kalimantan Timur.
+    </p>
+
+    <div class="highlight">
+      <strong>Target: Rp100 Juta</strong><br>
+      Untuk sistem irigasi modern dan infrastruktur pertanian berkelanjutan
+    </div>
+
+    <ul class="feature-list">
+      <li>Santri belajar hortikultura organik langsung</li>
+      <li>Timun organik berkualitas tinggi</li>
+      <li>Program berkelanjutan dengan infrastruktur modern</li>
+      <li>Transparansi penuh dan akuntabilitas</li>
+    </ul>
+  </div>
+
+  <div class="qr-section">
+    <div class="qr-label">💳 Scan untuk Donasi Sekarang</div>
+    <div class="qr-container" id="qrcode"></div>
+    <div class="merchant-info">
+      QRIS Merchant ID: ID1024330896845<br>
+      Terima dari: GoPay, BCA, Mandiri, BNI, BRI, dll
+    </div>
+  </div>
+
+  <div style="background: #F0F8FF; padding: 20px; border-radius: 12px; margin-bottom: 32px; text-align: center;">
+    <div style="font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #0099FF; font-weight: 600; margin-bottom: 12px;">💰 Atau Transfer Langsung</div>
+    <p style="color: #333; font-weight: 600; margin-bottom: 8px;">Bank BJB</p>
+    <p style="color: #555; font-size: 14px; margin-bottom: 4px;">Nomor Rekening: <strong>0160405831100</strong></p>
+    <p style="color: #555; font-size: 14px;">Atas Nama: <strong>Sdr HUDRI</strong></p>
+  </div>
+
+  <div class="cta-buttons">
+    <a href="https://wa.me/6283871666136?text=Saya%20ingin%20berkontribusi%20untuk%20Agro%20Santri%20Nusantara" class="btn btn-primary">📱 Chat WhatsApp</a>
+    <a href="tel:0838-7166-6136" class="btn btn-secondary">☎️ Hubungi Kami</a>
+  </div>
+
+  <div class="footer">
+    <p>Yayasan Siddiq Zarkasyi • Kalimantan Timur</p>
+    <p style="margin-top: 12px;">
+      Email: <a href="mailto:malviejayagroup@gmail.com" class="footer-link">malviejayagroup@gmail.com</a>
+    </p>
+    <p style="margin-top: 12px; font-size: 12px; color: #CCC;">
+      © 2026 • Transparansi • Akuntabilitas • Dampak Nyata
+    </p>
+  </div>
+</div>
+
+<script>
+  // Generate QR Code untuk QRIS GoPay
+  // Link untuk instruksi pembayaran QRIS
+  new QRCode(document.getElementById('qrcode'), {
+    text: 'https://wa.me/6283871666136?text=Saya%20ingin%20bayar%20via%20QRIS%20untuk%20Agro%20Santri.%20NMID:%20ID1024330896845',
+    width: 250,
+    height: 250,
+    colorDark: '#000000',
+    colorLight: '#FFFFFF',
+    correctLevel: QRCode.CorrectLevel.H
+  });
+</script>
+
+</body>
+</html>
