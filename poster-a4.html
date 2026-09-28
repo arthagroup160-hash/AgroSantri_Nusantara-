@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poster A4 - QR Codes Agro Santri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  @media print {
+    * { margin: 0; padding: 0; }
+    body { margin: 0; padding: 0; background: white; }
+    .poster { width: 100%; height: auto; }
+  }
+
+  :root{
+    --hutan-deep: #12200F;
+    --tanah: #6B4A2F;
+    --krem: #F3EEE1;
+    --emas: #A9762F;
+    --hijau: #2D5016;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { margin: 0; padding: 0; }
+  body {
+    margin: 0;
+    padding: 10px;
+    background: #ddd;
+    font-family: 'Work Sans', sans-serif;
+  }
+
+  .poster {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto 20px;
+    background: white;
+    padding: 20mm;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Background pattern */
+  .poster::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(169, 118, 47, 0.03) 35px, rgba(169, 118, 47, 0.03) 70px);
+    pointer-events: none;
+  }
+
+  .poster-content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 15mm;
+    border-bottom: 3px solid var(--emas);
+    padding-bottom: 8mm;
+  }
+
+  .header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28pt;
+    font-weight: 700;
+    color: var(--hutan-deep);
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .header-subtitle {
+    font-size: 11pt;
+    color: #666;
+    margin: 4pt 0 0;
+  }
+
+  .header-tagline {
+    font-size: 9pt;
+    color: var(--emas);
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 3pt;
+  }
+
+  /* Main Content */
+  .qr-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10mm;
+    flex: 1;
+    margin-bottom: 12mm;
+  }
+
+  .qr-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .qr-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12pt;
+    font-weight: 600;
+    color: var(--hutan-deep);
+    margin-bottom: 4pt;
+    line-height: 1.2;
+  }
+
+  .qr-item p {
+    font-size: 8pt;
+    color: #666;
+    margin-bottom: 6pt;
+    line-height: 1.3;
+    height: 24pt;
+    overflow: hidden;
+  }
+
+  .qr-code-container {
+    background: var(--krem);
+    padding: 6pt;
+    border-radius: 3pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    min-height: 70pt;
+  }
+
+  .qr-code-container canvas {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  /* Footer */
+  .footer {
+    border-top: 2px solid var(--emas);
+    padding-top: 8mm;
+    text-align: center;
+  }
+
+  .contact-info {
+    font-size: 9pt;
+    color: var(--hutan-deep);
+    font-weight: 600;
+    margin-bottom: 4pt;
+    display: flex;
+    justify-content: center;
+    gap: 12pt;
+  }
+
+  .contact-info span {
+    display: inline-block;
+  }
+
+  .footer-message {
+    font-size: 8pt;
+    color: #666;
+    margin-top: 3pt;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .poster { 
+      margin: 0; 
+      padding: 15mm;
+      box-shadow: none;
+      page-break-after: always;
+      width: 210mm;
+      height: 297mm;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .poster {
+      width: 100%;
+      height: auto;
+      padding: 15px;
+    }
+    
+    .header-title { font-size: 24pt; }
+    .header-subtitle { font-size: 10pt; }
+    .qr-grid { gap: 15px; }
+    .qr-item h3 { font-size: 11pt; }
+    .qr-item p { font-size: 8pt; }
+  }
+</style>
+</head>
+<body>
+
+<div class="poster">
+  <div class="poster-content">
+    <div class="header">
+      <h1 class="header-title">AGRO SANTRI<br>NUSANTARA</h1>
+      <p class="header-subtitle">Hortikultura Organik • Generasi Bermartabat • Inovasi Pertanian</p>
+      <p class="header-tagline">SCAN UNTUK BERKONTRIBUSI</p>
+    </div>
+
+    <div class="qr-grid">
+      <div class="qr-item" style="grid-column: span 1; border: 2px solid #FF6B35; padding: 8px; border-radius: 6px;">
+        <h3 style="color: #FF6B35; font-size: 11pt;">✨<br>QRIS<br>GoPay</h3>
+        <p style="font-size: 7pt; font-weight: 600; color: #FF6B35;">PRIORITAS</p>
+        <div class="qr-code-container" id="qr0"></div>
+      </div>
+
+      <div class="qr-item">
+        <h3>🎯<br>Donasi<br>Sekarang</h3>
+        <p>Form donasi & tracking</p>
+        <div class="qr-code-container" id="qr1"></div>
+      </div>
+
+      <div class="qr-item">
+        <h3>📊<br>Tracking<br>Donatur</h3>
+        <p>Progress & transparansi</p>
+        <div class="qr-code-container" id="qr2"></div>
+      </div>
+
+      <div class="qr-item">
+        <h3>📋<br>Detail<br>Kampanye</h3>
+        <p>RAB & FAQ lengkap</p>
+        <div class="qr-code-container" id="qr3"></div>
+      </div>
+
+      <div class="qr-item">
+        <h3>💬<br>Chat<br>WhatsApp</h3>
+        <p>Tanya & diskusi</p>
+        <div class="qr-code-container" id="qr4"></div>
+      </div>
+
+      <div class="qr-item">
+        <h3>📄<br>Proposal<br>Lengkap</h3>
+        <p>Dokumen formal</p>
+        <div class="qr-code-container" id="qr5"></div>
+      </div>
+
+      <div class="qr-item">
+        <h3>💳<br>Transfer<br>LinkAja</h3>
+        <p>Pembayaran cepat</p>
+        <div class="qr-code-container" id="qr6"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="contact-info">
+        <span>📞 0838-7166-6136</span>
+        <span>✉️ malviejayagroup@gmail.com</span>
+      </div>
+      <p class="footer-message">Yayasan Siddiq Zarkasyi • Kalimantan Timur • Transparansi • Akuntabilitas • Dampak Nyata</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const qrData = [
+    { id: 'qr0', url: 'https://wa.me/6283871666136?text=Saya%20ingin%20bayar%20via%20QRIS%2FGoPay%20untuk%20Agro%20Santri.%20NMID:%20ID1024330896845' },
+    { id: 'qr1', url: 'https://claude.ai/artifact/KqV67zhqJrH7SEAgn1Edku' },
+    { id: 'qr2', url: 'https://claude.ai/artifact/1GuaJubsjxZyvfXpLqQyhB' },
+    { id: 'qr3', url: 'https://claude.ai/artifact/BaGaUPSRX5eYAq8XNgJq5B' },
+    { id: 'qr4', url: 'https://wa.me/6283871666136?text=Saya%20ingin%20berkontribusi%20untuk%20Agro%20Santri%20Nusantara' },
+    { id: 'qr5', url: 'https://claude.ai/artifact/6DVS5DdR6taAiSSAJWhRim' },
+    { id: 'qr6', url: 'https://wa.me/6283871666136?text=Saya%20ingin%20transfer%20via%20LinkAja%200838-7166-6136%20untuk%20Agro%20Santri' }
+  ];
+
+  qrData.forEach(data => {
+    const container = document.getElementById(data.id);
+    if (container) {
+      new QRCode(container, {
+        text: data.url,
+        width: 140,
+        height: 140,
+        colorDark: '#12200F',
+        colorLight: '#F3EEE1',
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+  });
+
+  // Auto print hint
+  window.addEventListener('load', () => {
+    console.log('Siap untuk print. Tekan Ctrl+P atau Cmd+P');
+  });
+</script>
+
+</body>
+</html>
